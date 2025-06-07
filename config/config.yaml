@@ -1,0 +1,78 @@
+# Project configuration
+project_id: "your-gcp-project-id"  # Replace with your GCP project ID
+bq_dataset: "housing_watchdog"
+
+# Target locations for data collection
+locations:
+  - "Sydney"
+  - "Melbourne"
+  - "Brisbane"
+  - "Perth"
+  - "Adelaide"
+
+# Data sources configuration
+data_sources:
+  abs:
+    base_url: "https://api.data.abs.gov.au/data"
+    endpoints:
+      property_prices: "RP/1/ABS.ABS_ANNUAL_RESIDENTIAL_PROPERTY_PRICE_INDEX"
+      demographics: "ABS_REGIONAL_ASGS2016_1_HR_ERP_AGESEX"
+  domain:
+    base_url: "https://api.domain.com.au/v1"
+    endpoints:
+      listings: "listings/residential/_search"
+      locations: "locations"
+
+# Agent configurations
+agents:
+  ingestion:
+    batch_size: 100
+    max_retries: 3
+    retry_delay: 5  # seconds
+  cleaning:
+    required_fields:
+      - "id"
+      - "suburb"
+      - "state"
+      - "price"
+      - "bedrooms"
+      - "date"
+  trend:
+    window_sizes: [7, 30, 90]  # days
+    metrics:
+      - "mean"
+      - "median"
+      - "std"
+  anomaly:
+    threshold: 3.0  # Standard deviations for anomaly detection
+
+# Storage configuration
+storage:
+  raw_bucket: "{{ project_id }}-raw-data"
+  processed_bucket: "{{ project_id }}-processed-data"
+  temp_dir: "/tmp/aus_housing"
+
+# Logging configuration
+logging:
+  level: "INFO"
+  file: "logs/aus_housing_watchdog.log"
+  max_size: 10485760  # 10MB
+  backup_count: 5
+
+# API rate limiting
+rate_limits:
+  domain_api:  # requests per minute
+    default: 60
+    authenticated: 300
+  abs_api:  # requests per day
+    default: 1000
+
+# Feature flags
+features:
+  enable_anomaly_detection: true
+  enable_geospatial_analysis: true
+  enable_daily_reports: true
+
+# Version information
+version: "1.0.0"
+environment: "development"
