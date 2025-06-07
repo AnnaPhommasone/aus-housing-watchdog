@@ -523,9 +523,9 @@ class ReportAgent:
         
         # Close HTML
         html_parts.extend([
-                '</div>
-            </body>
-            </html>'
+            '</div>',
+            '    </body>',
+            '</html>'
         ])
         
         return '\n'.join(html_parts)
