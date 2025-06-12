@@ -25,5 +25,5 @@ A multi-agent system for monitoring and analysing Australian housing market tren
    ```
 5. Run the pipeline:
    ```bash
-   ./scripts/local_run.sh
+   adk web
    ```
