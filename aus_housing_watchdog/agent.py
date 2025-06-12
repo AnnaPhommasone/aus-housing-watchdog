@@ -9,12 +9,10 @@ from google.adk.agents.callback_context import CallbackContext
 from . import prompts
 from . import tools
 from .sub_agents import (
-    anomaly_detection,
     cleaning_data,
-    data_ingestion,
-    geospatial_analysis,
-    market_trends,
-    report_generation,
+    data_analysis,
+    recommendation,
+    visualiser,
 )
 
 date_today = date.today()
@@ -42,7 +40,7 @@ root_agent = Agent(
     global_instruction=(
         f"""
         You are a multi-agent system monitoring and analyzing the Australian housing market.
-        You orchestrate data ingestion, cleaning, trend analysis, anomaly detection, geospatial analysis, and reporting.
+        You orchestrate sub-agents to perform various tasks like data cleaning, analysis, anomaly detection, and report generation.
         Today's date: {date_today}
         """
     ),

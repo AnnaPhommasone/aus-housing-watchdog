@@ -4,9 +4,9 @@ def init_user_profile(state: dict):
     """Initialize empty user profile if not present."""
     if "user_profile" not in state:
         state["user_profile"] = {
-            "rent_or_buy": None,
             "salary": None,
             "family_size": None,
+            "land_size": None,
             "location_preferences": None,
             "budget": None,
             "special_preferences": None,
@@ -26,8 +26,13 @@ def update_user_profile(state: dict, key: str, value):
 
 def profile_is_complete(state: dict):
     """Check if user profile is complete enough to start analysis."""
-    required_fields = ["rent_or_buy", "salary",
-                       "family_size", "location_preferences", "budget"]
+    required_fields = [
+        "salary",
+        "family_size",
+        "land_size",
+        "location_preferences",
+        "budget"
+    ]
 
     for field in required_fields:
         if not state["user_profile"].get(field):
@@ -41,9 +46,9 @@ def summarize_user_profile(state: dict):
     summary = f"""
     **User Profile:**
 
-    - Rent or Buy: {profile.get('rent_or_buy')}
     - Salary: {profile.get('salary')}
     - Family Size: {profile.get('family_size')}
+    - Land Size: {profile.get('land_size')}
     - Location Preferences: {profile.get('location_preferences')}
     - Budget: {profile.get('budget')}
     - Special Preferences: {profile.get('special_preferences')}
