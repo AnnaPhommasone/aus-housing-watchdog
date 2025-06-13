@@ -20,7 +20,7 @@ def setup_before_agent_call(callback_context: CallbackContext):
 
 root_agent = Agent(
     model=os.getenv("SUB_AGENT_MODEL", "gemini-2.0-flash"),
-    name="visualiser",  # Replace with real name
+    name="data_cleaning",  # Replace with real name
     instruction=return_instructions(),
     global_instruction=(
         f"""

@@ -33,7 +33,7 @@ def return_instructions_root() -> str:
 
     Once the user says to proceed, you can:
 
-    1️⃣ Call `call_cleaning_data_agent` to clean the data.
+    1️⃣ Call `call_data_cleaning_agent` to clean the data.
     2️⃣ Using the cleaned data, call `call_data_analysis_agent` to analyze the data for trends, insights, risks, and anomalies.
     3️⃣ Based on the analysed data, call `call_recommendation_agent` to generate property recommendations.
     4️⃣ Call `call_visualization_agent` to create visualizations of the data.

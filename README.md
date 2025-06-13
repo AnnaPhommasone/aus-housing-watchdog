@@ -23,7 +23,7 @@ A multi-agent system for monitoring and analysing Australian housing market tren
    cp .env.example .env
    # Edit .env with your configuration
    ```
-5. Run the pipeline:
+5. Locally test:
    ```bash
    adk web
    ```

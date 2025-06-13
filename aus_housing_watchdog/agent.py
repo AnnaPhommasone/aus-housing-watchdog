@@ -9,10 +9,10 @@ from google.adk.agents.callback_context import CallbackContext
 from . import prompts
 from . import tools
 from .sub_agents import (
-    cleaning_data,
+    data_cleaning,
     data_analysis,
     recommendation,
-    visualiser,
+    data_visualiser,
 )
 
 date_today = date.today()
