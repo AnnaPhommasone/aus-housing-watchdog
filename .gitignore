@@ -40,6 +40,11 @@ ENV/
 *.parquet
 *.db
 *.sqlite3
+**/data/
+**/extract-1-raw.txt
+**/extract-2-clean.txt
+**/extract-2-very-clean.csv
+**/propsales.log
 
 # Logs
 logs/
