@@ -18,12 +18,12 @@ A multi-agent system for monitoring and analysing Australian housing market tren
    ```bash
    pip install -r requirements.txt
    ```
-4. Copy and configure environment variables:
+4. Copy and configure environment variables (only required once):
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
    ```
-5. Run the pipeline:
+5. Locally test:
    ```bash
    adk web
    ```

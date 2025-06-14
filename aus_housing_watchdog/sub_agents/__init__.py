@@ -3,15 +3,15 @@
 # Import sub-agents so they are available when you import sub_agents
 # (Optional — but helps static checking and autocompletion)
 
-from . import cleaning_data
+from . import data_cleaning
 from . import data_analysis
 from . import recommendation
-from . import visualiser
+from . import data_visualiser
 
 # Optional: define __all__ so it's clear what is public
 __all__ = [
-    "cleaning_data",
+    "data_cleaning",
     "data_analysis",
-    "market_trends",
-    "visualiser",
+    "recommendation",
+    "data_visualiser",
 ]

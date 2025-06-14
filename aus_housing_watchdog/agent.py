@@ -9,10 +9,11 @@ from google.adk.agents.callback_context import CallbackContext
 from . import prompts
 from . import tools
 from .sub_agents import (
-    cleaning_data,
+    data_fetching,
+    data_cleaning,
     data_analysis,
     recommendation,
-    visualiser,
+    data_visualiser,
 )
 
 date_today = date.today()
@@ -22,7 +23,7 @@ def setup_before_agent_call(callback_context: CallbackContext):
     """Setup the housing watchdog agent."""
 
     callback_context.state["project_id"] = os.getenv("GOOGLE_CLOUD_PROJECT")
-    callback_context.state["bq_dataset"] = os.getenv("BQ_DATASET_ID")
+    # callback_context.state["bq_dataset"] = os.getenv("BQ_DATASET_ID")
     # Initialise user profile memory
     init_user_profile(callback_context.state)
 
@@ -40,12 +41,14 @@ root_agent = Agent(
     global_instruction=(
         f"""
         You are a multi-agent system monitoring and analyzing the Australian housing market.
-        You orchestrate sub-agents to perform various tasks like data cleaning, analysis, anomaly detection, and report generation.
+        You orchestrate sub-agents to perform various tasks like data fetching, data cleaning, data analysis, anomaly detection, and report generation.
         Today's date: {date_today}
         """
     ),
-    sub_agents=[],   # ⛔️ temporarily empty
-    tools=[],        # ⛔️ temporarily empty
+    sub_agents=[
+        data_fetching.agent
+    ],
+    tools=[],
     before_agent_callback=setup_before_agent_call,
     generate_content_config=types.GenerateContentConfig(temperature=0.01),
 )
