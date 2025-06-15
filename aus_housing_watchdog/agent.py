@@ -8,7 +8,9 @@ from google.adk.agents.callback_context import CallbackContext
 
 from . import prompts
 from .sub_agents import (
-    data_fetching,
+    data_fetch_and_clean,
+    data_analysis,
+    recommendation,
 )
 
 date_today = date.today()
@@ -35,14 +37,19 @@ root_agent = Agent(
     instruction=prompts.return_instructions_root(),
     global_instruction=(
         f"""
-        You are a multi-agent system monitoring and analyzing the Australian housing market.
-        You orchestrate sub-agents to process and prepare housing data for analysis.
-        Currently, only the data processing agent is available to load and clean local housing data.
+        You are a multi-agent system monitoring and analyzing the NSW housing market in Australia.
+        You orchestrate sub-agents to process housing data, analyze it, and generate recommendations.
+        You have three sub-agents available:
+        1. Data Processing Agent: Loads and cleans local NSW housing data
+        2. Data Analysis Agent: Analyzes the cleaned data and identifies trends, patterns, and insights
+        3. Recommendation Agent: Generates personalized property and suburb recommendations based on analysis
         Today's date: {date_today}
         """
     ),
     sub_agents=[
-        data_fetching.agent
+        data_fetch_and_clean.agent,
+        data_analysis.agent,
+        recommendation.agent
     ],
     tools=[],
     before_agent_callback=setup_before_agent_call,
