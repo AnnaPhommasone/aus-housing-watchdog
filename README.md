@@ -1,6 +1,6 @@
 # Aus Housing Watchdog
 
-A multi-agent system for monitoring and analysing Australian housing market trends and anomalies using Google's Agent Development Kit (ADK).
+A multi-agent system that analyses the given housing market data, detects trends, anomalies, and risks, and generates insightful reports or visualisations for public use (media, policymakers, public).
 
 ## 🏗️ Architecture
 
