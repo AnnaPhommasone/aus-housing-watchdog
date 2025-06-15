@@ -7,13 +7,8 @@ from google.adk.agents import Agent
 from google.adk.agents.callback_context import CallbackContext
 
 from . import prompts
-from . import tools
 from .sub_agents import (
     data_fetching,
-    data_cleaning,
-    data_analysis,
-    recommendation,
-    data_visualiser,
 )
 
 date_today = date.today()
@@ -41,7 +36,8 @@ root_agent = Agent(
     global_instruction=(
         f"""
         You are a multi-agent system monitoring and analyzing the Australian housing market.
-        You orchestrate sub-agents to perform various tasks like data fetching, data cleaning, data analysis, anomaly detection, and report generation.
+        You orchestrate sub-agents to process and prepare housing data for analysis.
+        Currently, only the data processing agent is available to load and clean local housing data.
         Today's date: {date_today}
         """
     ),
