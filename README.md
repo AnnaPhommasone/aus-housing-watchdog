@@ -1,12 +1,8 @@
 # Aus Housing Watchdog
 
-A multi-agent system that analyses the given housing market data, detects trends, anomalies, and risks, and generates insightful reports or visualisations for public use (media, policymakers, public).
+A multi-agent system that provides a recommendation for the best NSW suburbs to purchase a home in given the users preferences.
 
-## 🏗️ Architecture
-
-## 🚀 Quickstart
-
-### Local Development
+## Setup
 
 1. Clone the repository
 2. Set up a virtual environment:
