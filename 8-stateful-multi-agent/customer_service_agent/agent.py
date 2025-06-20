@@ -29,17 +29,17 @@ customer_service_agent = Agent(
 
     **User Information:**
     <user_info>
-    Name: {user_name}
+    Name: {+state.user_name+}
     </user_info>
 
     **Purchase Information:**
     <purchase_info>
-    Purchased Courses: {purchased_courses}
+    Purchased Courses: {+state.purchased_courses+}
     </purchase_info>
 
     **Interaction History:**
     <interaction_history>
-    {interaction_history}
+    {+state.interaction_history+}
     </interaction_history>
 
     You have access to the following specialized agents:
